@@ -1,0 +1,6 @@
+import 'package:equatable/equatable.dart';import 'package:flutter/material.dart';import '/core/app_export.dart';import '../models/historymusic_item_model.dart';import 'package:dhiwise_flutter_music_app/presentation/history_music_page/models/history_music_model.dart';part 'history_music_event.dart';part 'history_music_state.dart';/// A bloc that manages the state of a HistoryMusic according to the event that is dispatched to it.
+class HistoryMusicBloc extends Bloc<HistoryMusicEvent, HistoryMusicState> {HistoryMusicBloc(HistoryMusicState initialState) : super(initialState) { on<HistoryMusicInitialEvent>(_onInitialize); }
+
+_onInitialize(HistoryMusicInitialEvent event, Emitter<HistoryMusicState> emit, ) async  { emit(state.copyWith(historyMusicModelObj: state.historyMusicModelObj?.copyWith(historymusicItemList: fillHistorymusicItemList()))); } 
+List<HistorymusicItemModel> fillHistorymusicItemList() { return [HistorymusicItemModel(image: ImageConstant.imgImage61, songTitle: "Starboy Speed Up", details: "Just Lowkey", image1: ImageConstant.imgCategoriesMore), HistorymusicItemModel(image: ImageConstant.imgImage62, songTitle: "Die For You", details: "The Weeknd", image1: ImageConstant.imgCategoriesMore)]; } 
+ }

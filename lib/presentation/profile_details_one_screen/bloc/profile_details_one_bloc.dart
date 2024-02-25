@@ -1,0 +1,6 @@
+import 'package:equatable/equatable.dart';import 'package:flutter/material.dart';import '/core/app_export.dart';import '../models/profiledetailslist_item_model.dart';import 'package:dhiwise_flutter_music_app/presentation/profile_details_one_screen/models/profile_details_one_model.dart';part 'profile_details_one_event.dart';part 'profile_details_one_state.dart';/// A bloc that manages the state of a ProfileDetailsOne according to the event that is dispatched to it.
+class ProfileDetailsOneBloc extends Bloc<ProfileDetailsOneEvent, ProfileDetailsOneState> {ProfileDetailsOneBloc(ProfileDetailsOneState initialState) : super(initialState) { on<ProfileDetailsOneInitialEvent>(_onInitialize); }
+
+_onInitialize(ProfileDetailsOneInitialEvent event, Emitter<ProfileDetailsOneState> emit, ) async  { emit(state.copyWith(profileDetailsOneModelObj: state.profileDetailsOneModelObj?.copyWith(profiledetailslistItemList: fillProfiledetailslistItemList()))); } 
+List<ProfiledetailslistItemModel> fillProfiledetailslistItemList() { return [ProfiledetailslistItemModel(image: ImageConstant.imgImage74, positions: "Ariana Grande - All \nSongs "), ProfiledetailslistItemModel(image: ImageConstant.imgImage75, positions: "Ariana Grande - Top \nGreatest Hits")]; } 
+ }

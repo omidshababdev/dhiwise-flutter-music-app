@@ -1,0 +1,6 @@
+import 'package:equatable/equatable.dart';import 'package:flutter/material.dart';import '/core/app_export.dart';import '../models/playlistdetails_item_model.dart';import 'package:dhiwise_flutter_music_app/presentation/playlist_details_screen/models/playlist_details_model.dart';part 'playlist_details_event.dart';part 'playlist_details_state.dart';/// A bloc that manages the state of a PlaylistDetails according to the event that is dispatched to it.
+class PlaylistDetailsBloc extends Bloc<PlaylistDetailsEvent, PlaylistDetailsState> {PlaylistDetailsBloc(PlaylistDetailsState initialState) : super(initialState) { on<PlaylistDetailsInitialEvent>(_onInitialize); }
+
+_onInitialize(PlaylistDetailsInitialEvent event, Emitter<PlaylistDetailsState> emit, ) async  { emit(state.copyWith(playlistDetailsModelObj: state.playlistDetailsModelObj?.copyWith(playlistdetailsItemList: fillPlaylistdetailsItemList()))); } 
+List<PlaylistdetailsItemModel> fillPlaylistdetailsItemList() { return [PlaylistdetailsItemModel(image: ImageConstant.imgImage61, songTitle: "Starboy Speed Up", details: "Just Lowkey"), PlaylistdetailsItemModel(image: ImageConstant.imgImage64, songTitle: "The Hills", details: "The Weeknd"), PlaylistdetailsItemModel(image: ImageConstant.imgImage65, songTitle: "I Feel It Coming", details: "The Weeknd, Daft Punk")]; } 
+ }
