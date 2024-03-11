@@ -1,0 +1,6 @@
+import 'package:equatable/equatable.dart';import 'package:flutter/material.dart';import '/core/app_export.dart';import '../models/songplayoverscreen_item_model.dart';import 'package:dhiwise_flutter_music_app/presentation/song_play_over_screen_page/models/song_play_over_screen_model.dart';part 'song_play_over_screen_event.dart';part 'song_play_over_screen_state.dart';/// A bloc that manages the state of a SongPlayOverScreen according to the event that is dispatched to it.
+class SongPlayOverScreenBloc extends Bloc<SongPlayOverScreenEvent, SongPlayOverScreenState> {SongPlayOverScreenBloc(SongPlayOverScreenState initialState) : super(initialState) { on<SongPlayOverScreenInitialEvent>(_onInitialize); }
+
+_onInitialize(SongPlayOverScreenInitialEvent event, Emitter<SongPlayOverScreenState> emit, ) async  { emit(state.copyWith(songPlayOverScreenModelObj: state.songPlayOverScreenModelObj?.copyWith(songplayoverscreenItemList: fillSongplayoverscreenItemList()))); } 
+List<SongplayoverscreenItemModel> fillSongplayoverscreenItemList() { return [SongplayoverscreenItemModel(image: ImageConstant.imgImage60, songTitle: "Starboy", details: "The Weeknd, Daft Punk", image1: ImageConstant.imgIconlyBoldPlayOnprimarycontainer, image2: ImageConstant.imgCategoriesMore)]; } 
+ }

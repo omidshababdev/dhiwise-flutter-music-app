@@ -1,0 +1,6 @@
+import 'package:equatable/equatable.dart';import 'package:flutter/material.dart';import '/core/app_export.dart';import '../models/selectpaymentmethod_item_model.dart';import 'package:dhiwise_flutter_music_app/presentation/select_payment_method_screen/models/select_payment_method_model.dart';part 'select_payment_method_event.dart';part 'select_payment_method_state.dart';/// A bloc that manages the state of a SelectPaymentMethod according to the event that is dispatched to it.
+class SelectPaymentMethodBloc extends Bloc<SelectPaymentMethodEvent, SelectPaymentMethodState> {SelectPaymentMethodBloc(SelectPaymentMethodState initialState) : super(initialState) { on<SelectPaymentMethodInitialEvent>(_onInitialize); }
+
+_onInitialize(SelectPaymentMethodInitialEvent event, Emitter<SelectPaymentMethodState> emit, ) async  { emit(state.copyWith(selectPaymentMethodModelObj: state.selectPaymentMethodModelObj?.copyWith(selectpaymentmethodItemList: fillSelectpaymentmethodItemList()))); } 
+List<SelectpaymentmethodItemModel> fillSelectpaymentmethodItemList() { return [SelectpaymentmethodItemModel(payPal: ImageConstant.imgFrameLightBlue600, payPal1: "PayPal"), SelectpaymentmethodItemModel(payPal: ImageConstant.imgFrameRed500, payPal1: "Google Pay")]; } 
+ }

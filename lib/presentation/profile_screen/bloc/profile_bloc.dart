@@ -1,0 +1,6 @@
+import 'package:equatable/equatable.dart';import 'package:flutter/material.dart';import '/core/app_export.dart';import 'package:country_pickers/country.dart';import 'package:country_pickers/utils/utils.dart';import 'package:dhiwise_flutter_music_app/presentation/profile_screen/models/profile_model.dart';part 'profile_event.dart';part 'profile_state.dart';/// A bloc that manages the state of a Profile according to the event that is dispatched to it.
+class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {ProfileBloc(ProfileState initialState) : super(initialState) { on<ProfileInitialEvent>(_onInitialize); on<ChangeCountryEvent>(_changeCountry); }
+
+_changeCountry(ChangeCountryEvent event, Emitter<ProfileState> emit, ) { emit(state.copyWith(selectedCountry: event.value)); } 
+_onInitialize(ProfileInitialEvent event, Emitter<ProfileState> emit, ) async  { emit(state.copyWith(fullNameController: TextEditingController(), nameController: TextEditingController(), dateOfBirthController: TextEditingController(), emailController: TextEditingController(), phoneNumberController: TextEditingController()));NavigatorService.pushNamed(AppRoutes.homeContainerScreen, );NavigatorService.pushNamed(AppRoutes.createNewPinScreen, ); } 
+ }

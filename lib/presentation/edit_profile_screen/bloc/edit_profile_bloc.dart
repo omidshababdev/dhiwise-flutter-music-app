@@ -1,0 +1,8 @@
+import 'package:equatable/equatable.dart';import 'package:flutter/material.dart';import '/core/app_export.dart';import 'package:country_pickers/country.dart';import 'package:country_pickers/utils/utils.dart';import 'package:dhiwise_flutter_music_app/presentation/edit_profile_screen/models/edit_profile_model.dart';part 'edit_profile_event.dart';part 'edit_profile_state.dart';/// A bloc that manages the state of a EditProfile according to the event that is dispatched to it.
+class EditProfileBloc extends Bloc<EditProfileEvent, EditProfileState> {EditProfileBloc(EditProfileState initialState) : super(initialState) { on<EditProfileInitialEvent>(_onInitialize); on<ChangeCountryEvent>(_changeCountry); on<ChangeDropDownEvent>(_changeDropDown); }
+
+_changeCountry(ChangeCountryEvent event, Emitter<EditProfileState> emit, ) { emit(state.copyWith(selectedCountry: event.value)); } 
+_changeDropDown(ChangeDropDownEvent event, Emitter<EditProfileState> emit, ) { emit(state.copyWith(selectedDropDownValue: event.value)); } 
+List<SelectionPopupModel> fillDropdownItemList() { return [SelectionPopupModel(id: 1, title: "Item One", isSelected: true), SelectionPopupModel(id: 2, title: "Item Two"), SelectionPopupModel(id: 3, title: "Item Three")]; } 
+_onInitialize(EditProfileInitialEvent event, Emitter<EditProfileState> emit, ) async  { emit(state.copyWith(inputFields1Controller: TextEditingController(), inputFields2Controller: TextEditingController(), dateController: TextEditingController(), emailController: TextEditingController(), phoneNumberController: TextEditingController())); emit(state.copyWith(editProfileModelObj: state.editProfileModelObj?.copyWith(dropdownItemList: fillDropdownItemList()))); } 
+ }

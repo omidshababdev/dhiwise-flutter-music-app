@@ -1,0 +1,6 @@
+import 'package:equatable/equatable.dart';import 'package:flutter/material.dart';import '/core/app_export.dart';import '../models/popularartists_item_model.dart';import 'package:dhiwise_flutter_music_app/presentation/popular_artists_screen/models/popular_artists_model.dart';part 'popular_artists_event.dart';part 'popular_artists_state.dart';/// A bloc that manages the state of a PopularArtists according to the event that is dispatched to it.
+class PopularArtistsBloc extends Bloc<PopularArtistsEvent, PopularArtistsState> {PopularArtistsBloc(PopularArtistsState initialState) : super(initialState) { on<PopularArtistsInitialEvent>(_onInitialize); }
+
+_onInitialize(PopularArtistsInitialEvent event, Emitter<PopularArtistsState> emit, ) async  { emit(state.copyWith(popularArtistsModelObj: state.popularArtistsModelObj?.copyWith(popularartistsItemList: fillPopularartistsItemList()))); } 
+List<PopularartistsItemModel> fillPopularartistsItemList() { return [PopularartistsItemModel(arianaGrande: ImageConstant.imgImage21, artistsName: "Ariana Grande"), PopularartistsItemModel(arianaGrande: ImageConstant.imgImage22, artistsName: "The Weeknd"), PopularartistsItemModel(arianaGrande: ImageConstant.imgImage23, artistsName: "Acidrap"), PopularartistsItemModel(arianaGrande: ImageConstant.imgImage24, artistsName: "Ryan Jones")]; } 
+ }
